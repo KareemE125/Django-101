@@ -1,0 +1,10 @@
+{% comment %} CSS Styles {% endcomment %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'styles/baseStyle.css' %}">
+
+{% comment %} Navbar {% endcomment %}
+{% include './navbar.html' %}
+
+{% comment %} Body Content {% endcomment %}
+{% block content %}
+{% endblock content %}

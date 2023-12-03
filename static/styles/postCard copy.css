@@ -1,0 +1,90 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+.card-list{
+    margin: auto;
+    width: 75%;
+    min-width: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    gap: 20px;
+}
+
+/* Post Card */
+
+.card{
+    padding: 18px;
+    border-radius: 15px;
+    background-color: rgb(16, 68, 68);
+    color: white;
+    width: 50%;
+    min-width: 400px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.card .header{
+    position: relative;
+    margin-bottom: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card .header span{
+    font-size: 12px;
+}
+
+
+.card .header::after{
+    content: '';
+    display: block;
+    position: absolute;
+    width: 105%;
+    transform: translateX(-2%);
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.2);
+    margin: 5px 0px;
+}
+
+
+.card .body{
+    padding: 16px 0px;
+}
+
+
+
+
+.card .footer{
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin-top: 16px;
+}
+
+.card .footer::before{
+    content: '';
+    display: block;
+    position: absolute;
+    width: 105%;
+    transform: translateX(-2%);
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.2);
+    margin: 5px 0px;
+}
+
+.card .footer span{
+    margin-top: 16px;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.7);
+    align-self: end;
+}

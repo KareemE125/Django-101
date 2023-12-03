@@ -1,0 +1,20 @@
+{% extends "shared/base.html" %}
+{% block content %}
+
+
+    <h1>Hello {{name}}</h1>
+    <h2>Age is {{age}}</h2>
+    <h2>Hobbies are {{hobbies}}</h2>
+
+    {% if age < 40 %}
+        {% for hobby in hobbies %}
+            <h3>{{hobby}}</h3>
+        {% endfor %}
+    {% else %}
+        {% for letter in name %}
+            <h3>{{letter}}</h3>
+        {% endfor%}
+    {% endif %}
+
+{% endblock content %}
+

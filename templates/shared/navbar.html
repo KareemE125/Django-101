@@ -1,0 +1,15 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'styles/navbar.css' %}">
+
+<nav> 
+    <ul>
+        <li><a href="{% url "home" %}">Home</a></li>
+        <li><a href="{% url "pages-default" %}">Pages</a></li>
+        <li><a href="{% url "pages-index" %}">PagesIndex</a></li>
+        <li><a href="{% url "posts-index" %}">Posts</a></li>
+        <li><a href="#">Login</a></li>
+        <li><a href="#">Register</a></li>
+        <li><a href="#">Logout</a></li>
+    </ul>     
+    
+</nav>
