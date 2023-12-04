@@ -18,7 +18,6 @@ class Author(models.Model):
 class Post(models.Model):
     categories = [('technology', 'Technology'), ('fashion', 'Fashion'), ('cars', 'Cars'), ('sports', 'Sports'), ('health', 'Health'), ('politics', 'Politics'), ('travel', 'Travel'), ('food', 'Food'), ('music', 'Music'), ('movies', 'Movies'), ('games', 'Games'), ('books', 'Books'), ('art', 'Art'), ('animals', 'Animals'), ('other', 'Other')]
     
-    id = models.AutoField(primary_key=True)
     title = models.CharField(max_length=255)
     content = models.TextField()
     author = models.ForeignKey(Author, on_delete=models.CASCADE, null=True)

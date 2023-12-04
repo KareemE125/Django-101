@@ -58,8 +58,24 @@
 
 .card .body{
     padding: 16px 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    gap: 16px;
 }
 
+.card .body .img-container{
+    margin: auto;
+    width: 200px;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.card .body .img-container img{
+    width: 100%;
+    border-radius: 15px;
+}
 
 
 
