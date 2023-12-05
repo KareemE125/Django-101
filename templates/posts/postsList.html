@@ -12,9 +12,12 @@
                 </div>
                 <div class="body">
                     <p>{{ post.content }}</p>
+                    <div class="img-container">
+                        <img src="{{post.images.url}}" alt="Post's Image">
+                    </div>
                 </div>
                 <div class="footer">
-                    <span> <strong>BY ::</strong>  {{ post.author }}</span>
+                    <span> {{post.id}} - <strong>BY ::</strong>  {{ post.author }}</span>
                 </div>
             </div>
         {% endfor %}
