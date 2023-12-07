@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'pages.apps.PagesConfig',
     'home.apps.HomeConfig',
     'posts.apps.PostsConfig',
+    'forms.apps.FormsConfig',
 ]
 
 MIDDLEWARE = [
@@ -122,6 +123,7 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'project/static'),
     os.path.join(BASE_DIR, 'posts/static'),
+    os.path.join(BASE_DIR, 'forms/static'),
 ]
 
 # Media files

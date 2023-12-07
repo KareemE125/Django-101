@@ -1,0 +1,16 @@
+{% extends "shared/base.html" %}
+{% load static %}
+{% block content %}
+    <link rel="stylesheet" href="{% static 'styles/forms.css' %}">
+    <h1>Forms</h1>
+    <form action="" method="POST">
+        {% csrf_token %}
+        <br>
+        <input type="text" name="username" id="username" placeholder="username"> 
+        <br><br>
+        <input type="password" name="password" id="password" placeholder="password"> 
+        <br><br>
+        <button type="submit">Submit</button>
+        <br>
+    </form>
+{% endblock content %}
