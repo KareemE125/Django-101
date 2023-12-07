@@ -1,13 +1,14 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import User
+from .forms import UserForm
 # Create your views here.
 
 def index(request):
-    body = request.POST.dict()
-    username = body.get('username', '')
-    password = body.get('password', '')
     
-    if username and password:
-        User(username=username, password=password).save()
+    if(request.method == 'POST'):
+        formData = UserForm(request.POST)
+        if(formData.is_valid()):
+            formData.save()
+            return redirect('home')
     
-    return render(request, 'forms/index.html')
+    return render(request, 'forms/index.html', {"userForm": UserForm})

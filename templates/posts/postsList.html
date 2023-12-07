@@ -5,6 +5,7 @@
     <h2>Posts List</h2>
     <section class="card-list">
         {% for post in posts %}
+            {% if not post.isDeleted %}
             <div class="card">
                 <div class="header">
                     <h3 >{{ post.title }}</h3>
@@ -20,6 +21,7 @@
                     <span> {{post.id}} - <strong>BY ::</strong>  {{ post.author }}</span>
                 </div>
             </div>
+            {% endif %}
         {% endfor %}
     </section>
 {% endblock content %}
