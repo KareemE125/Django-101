@@ -6,21 +6,27 @@
     <section class="card-list">
         {% for post in posts %}
             {% if not post.isDeleted %}
-            <div class="card">
-                <div class="header">
-                    <h3 >{{ post.title }}</h3>
-                    <span>Created At: {{ post.createdAt }}</span>
+                <div class="card" onclick="window.location='{% url "post" post.id %}'">
+                        <div class="header">
+                            <h3 >{{ post.title }}</h3>
+                            <span>Created At: {{ post.createdAt }}</span>
+                        </div>
+                        <div class="body">
+                            <p>{{ post.content }}</p>
+                            <div class="img-container">
+                                {% if post.images %}
+                                    <img src="{{post.images.url}}" alt="Post's Image">
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="footer">
+                            <span> <strong>BY ::</strong>  {{ post.author }}</span>
+                            <div>
+                                <a href="{% url "edit-post" post.id %}">  <strong>Edit</strong> </a>
+                                <a href="{% url "delete-post" post.id %}">  <strong>Delete</strong> </a>
+                            </div>
+                        </div>
                 </div>
-                <div class="body">
-                    <p>{{ post.content }}</p>
-                    <div class="img-container">
-                        <img src="{{post.images.url}}" alt="Post's Image">
-                    </div>
-                </div>
-                <div class="footer">
-                    <span> {{post.id}} - <strong>BY ::</strong>  {{ post.author }}</span>
-                </div>
-            </div>
             {% endif %}
         {% endfor %}
     </section>

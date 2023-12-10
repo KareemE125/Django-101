@@ -1,5 +1,30 @@
 {% extends "shared/base.html" %}
 
+{% load static %}
 {% block content %}
-    <h3>Post {{post.id}}</h3>
+    <link rel="stylesheet" href="{% static "styles/postCard.css" %}">
+    <h2>Post ID: {{post.id}}</h2>
+    <section class="card-list">
+        <div class="card">
+            <div class="header">
+                <h3 >{{ post.title }}</h3>
+                <span>Created At: {{ post.createdAt }}</span>
+            </div>
+            <div class="body">
+                <p>{{ post.content }}</p>
+                <div class="img-container">
+                    {% if post.images %}
+                        <img src="{{post.images.url}}" alt="Post's Image">
+                    {% endif %}
+                </div>
+            </div>
+            <div class="footer">
+                <span> <strong>BY ::</strong>  {{ post.author }}</span>
+                <div>
+                    <a href="{% url "edit-post" post.id %}">  <strong>Edit</strong> </a>
+                    <a href="{% url "delete-post" post.id %}">  <strong>Delete</strong> </a>
+                </div>
+            </div>
+        </div>
+    </section>
 {% endblock content %}

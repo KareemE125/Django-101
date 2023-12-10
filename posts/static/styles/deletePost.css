@@ -1,0 +1,43 @@
+form {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #000000;
+    border-radius: 5px;
+    text-align: center;
+}
+
+p {
+    margin-bottom: 20px;
+}
+
+button {
+    padding: 10px 20px;
+    margin: 0 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button[type="submit"] {
+    background-color: #dc3545; /* Bootstrap danger color */
+    color: #fff;
+}
+
+button[type="submit"]:hover {
+    background-color: #c82333; /* Darker shade on hover */
+}
+
+a {
+    text-decoration: none;
+}
+
+button[type="button"] {
+    background-color: #6c757d; /* Bootstrap secondary color */
+    color: #fff;
+}
+
+button[type="button"]:hover {
+    background-color: #5a6268; /* Darker shade on hover */
+}

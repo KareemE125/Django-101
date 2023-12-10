@@ -21,7 +21,7 @@ li {
     margin-right: 10px;
 }
 
-a {
+nav a {
     display: block;
     color: white;
     text-align: center;
@@ -29,7 +29,7 @@ a {
     padding: 5px 20px;
 }
 
-a:hover {
+nav a:hover {
     background-color: rgb(13, 95, 95);
     border-radius: 10px;
 }
