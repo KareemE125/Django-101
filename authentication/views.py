@@ -33,8 +33,7 @@ def registerPage(request):
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
-        user = User.objects.create_user(username=username, password=password)
-        User.save(user)
+        User.objects.create_user(username=username, password=password)
     
         return redirect('login')
     
