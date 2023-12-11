@@ -1,9 +1,11 @@
 from django.shortcuts import render, redirect
 from django.db.models import Q
+from django.contrib.auth.decorators import login_required
 from .models import Post, Author, Category
 from .forms import PostForm
 
 # Create your views here.
+@login_required(login_url='/auth/login')
 def postsList(request):
     bc = request.GET.get("bc")
     ba = request.GET.get("ba")
@@ -37,10 +39,11 @@ def postsList(request):
     
     return render(request, 'posts/postsList.html', context)
 
-
+@login_required(login_url='/auth/login')
 def post(request, id):
     return render(request, 'posts/post.html', {'post': Post.objects.get(id=id)} )
 
+@login_required(login_url='/auth/login')
 def addPost(request):
     postData = PostForm()
     if request.method == 'POST':
@@ -51,6 +54,7 @@ def addPost(request):
 
     return render(request, 'posts/editPost.html', {'postForm': postData} )
 
+@login_required(login_url='/auth/login')
 def editPost(request, id):
     post = Post.objects.get(id=id)
     postData = PostForm(instance=post)
@@ -63,6 +67,7 @@ def editPost(request, id):
         
     return render(request, 'posts/editPost.html', {'id': id, 'postForm': postData} )
 
+@login_required(login_url='/auth/login')
 def deletePost(request, id):
     post = Post.objects.get(id=id)
     if request.method == 'POST':

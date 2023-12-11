@@ -8,6 +8,9 @@ def default(request):
     return redirect('login')
 
 def loginPage(request):
+    if request.user.is_authenticated:
+        return redirect('home')
+    
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
@@ -24,8 +27,8 @@ def loginPage(request):
     return render(request, 'authentication/login.html',{"title": "Login"})
 
 def registerPage(request):
-    print(request.user)
-    print(request.user.is_authenticated)
+    if request.user.is_authenticated:
+        return redirect('home')
     
     if request.method == 'POST':
         username = request.POST.get('username')
