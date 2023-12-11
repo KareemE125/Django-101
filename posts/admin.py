@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Post, Author
+from .models import Post, Author, Category
 
 # Register your models here.
 class PostAdmin(admin.ModelAdmin):
@@ -10,4 +10,5 @@ class PostAdmin(admin.ModelAdmin):
     list_filter = ['author', 'isDeleted', 'category']
     
 admin.site.register(Post, PostAdmin)
+admin.site.register(Category)
 admin.site.register(Author)

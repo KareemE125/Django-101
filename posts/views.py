@@ -1,10 +1,28 @@
 from django.shortcuts import render, redirect
-from .models import Post
+from .models import Post, Author, Category
 from .forms import PostForm
 
 # Create your views here.
-def index(request):
-    return render(request, 'posts/index.html')
+def postsList(request):
+    bc = request.GET.get("bc")
+    ba = request.GET.get("ba")
+    
+    posts = Post.objects.all()
+    
+    if bc and bc!= "all":
+        posts = posts.filter(category__name = bc)
+    
+    if ba and ba!= "all":
+        posts = posts.filter(author__name = ba)
+
+    context = {
+        'posts': posts, 
+        'authors': Author.objects.all(),
+        'categories': Category.objects.all(),
+    }
+    
+    return render(request, 'posts/postsList.html', context)
+
 
 def post(request, id):
     return render(request, 'posts/post.html', {'post': Post.objects.get(id=id)} )
@@ -39,5 +57,3 @@ def deletePost(request, id):
     return render(request, 'posts/deletePost.html', {"post": post})
 
 
-def postsList(request):
-    return render(request, 'posts/postsList.html', {'posts': Post.objects.all()})
