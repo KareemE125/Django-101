@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.db.models import Q
 from .models import Post, Author, Category
 from .forms import PostForm
 
@@ -6,9 +7,21 @@ from .forms import PostForm
 def postsList(request):
     bc = request.GET.get("bc")
     ba = request.GET.get("ba")
+    search = request.GET.get("search")
     
     posts = Post.objects.all()
     
+    if 'reset' in request.GET:
+        return redirect('posts')
+    
+    if search:
+        posts = posts.filter(
+            Q(title__icontains = search) | 
+            Q(content__icontains = search) |
+            Q(author__name__icontains = search) |
+            Q(category__name__icontains = search)
+        )
+        
     if bc and bc!= "all":
         posts = posts.filter(category__name = bc)
     
@@ -16,7 +29,8 @@ def postsList(request):
         posts = posts.filter(author__name = ba)
 
     context = {
-        'posts': posts, 
+        'posts': posts,
+        'postCount': posts.count(),
         'authors': Author.objects.all(),
         'categories': Category.objects.all(),
     }

@@ -29,3 +29,47 @@
 .sideBar ul li a:hover{
     opacity: 1;
 }
+
+.sideBar .active-link{
+    opacity: 1;
+}
+
+.sideBar form{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.sideBar form div{
+    align-self: end;
+}
+
+.sideBar form button[name="reset"]{
+    background-color: rgb(141, 17, 17);
+}
+.sideBar form button[name="reset"]:hover{
+    background-color: rgb(195, 26, 26);
+}
+
+
+.sideBar form input, .sideBar form button{
+    padding: 6px 12px;
+    border-radius: 10px;
+    color: white;
+}
+
+.sideBar form input{
+    background: #00000000;
+    border: rgba(255, 255, 255, 0.5) 1px solid;
+}
+
+.sideBar form button{
+    background-color: rgb(16, 68, 68);
+    border: none;
+    cursor: pointer;
+}
+
+.sideBar form button:hover{
+    background-color: rgb(31, 125, 125);
+}
+

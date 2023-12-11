@@ -6,26 +6,47 @@
     <link rel="stylesheet" href="{% static "styles/postCard.css" %}">
 
     <section class="sideBar">
+        <h3>Search</h3><br>
+        <form action="" method="get">
+            <input type="text" name="search" placeholder="Search..." value={{request.GET.search}}>
+            <div>
+                <button type="submit" name='reset'>Reset</button>
+                <button type="submit">Search</button>
+            </div>
+        </form>
+
+        <br><br>
         <h3>Browse Categories</h3><br>
         <ul>
-            <li><a href="{% url "posts" %}?{% if request.GET.ba %}ba={{ request.GET.ba }}{% endif %}&bc=all">All</a></li>
+            <li><a 
+                class="{% if request.GET.bc == "all" %} active-link {% endif %}" 
+                href="{% url "posts" %}?{% if request.GET.ba %}ba={{ request.GET.ba }}{% endif %}&bc=all"
+                >All</a></li>
             {% for cat in categories %}
-            <li><a href="{% url "posts" %}?{% if request.GET.ba %}ba={{ request.GET.ba }}&{% endif %}bc={{ cat.name }}">{{ cat.name }}</a></li>
+            <li><a 
+                class="{% if cat.name == request.GET.bc %} active-link {% endif %}" 
+                href="{% url "posts" %}?{% if request.GET.ba %}ba={{ request.GET.ba }}&{% endif %}bc={{ cat.name }}">{{ cat.name }}</a></li>
             {% endfor %}
         </ul>
         <br><br>
         <h3>Browse Authors</h3><br>
         <ul>
-            <li><a href="{% url "posts" %}?{% if request.GET.bc %}bc={{ request.GET.bc }}{% endif %}&ba=all">All</a></li>
+            <li><a 
+                class="{% if request.GET.ba == "all" %} active-link {% endif %}" 
+                href="{% url "posts" %}?{% if request.GET.bc %}bc={{ request.GET.bc }}{% endif %}&ba=all">All</a></li>
             {% for author in authors %}
-            <li><a href="{% url "posts" %}?{% if request.GET.bc %}bc={{ request.GET.bc }}&{% endif %}ba={{ author.name }}">{{ author.name }}</a></li>
+            <li><a 
+                class="{% if author.name == request.GET.ba %} active-link {% endif %}" 
+                href="{% url "posts" %}?{% if request.GET.bc %}bc={{ request.GET.bc }}&{% endif %}ba={{ author.name }}">
+                {{ author.name }}</a>
+            </li>
             {% endfor %}
         </ul>
     </section>
     
 
     <section>
-        <h2>Posts List</h2>
+        <h2>Posts List <span style="font-size: 14px; font-weight: 500;">( {{postCount}} posts )</span></h2>
         <section class="card-list">
             {% if not posts  %}
                 <p>Not Results Found for the applied filters</p>

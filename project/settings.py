@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'home.apps.HomeConfig',
     'posts.apps.PostsConfig',
-    'forms.apps.FormsConfig',
+    'authentication.apps.AuthenticationConfig',
 ]
 
 MIDDLEWARE = [
@@ -122,7 +122,7 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'project/static'),
     os.path.join(BASE_DIR, 'posts/static'),
-    os.path.join(BASE_DIR, 'forms/static'),
+    os.path.join(BASE_DIR, 'authentication/static'),
 ]
 
 # Media files
