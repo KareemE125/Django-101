@@ -57,7 +57,7 @@
                     <div class="card" onclick="window.location='{% url "post" post.id %}'">
                             <div class="header">
                                 <h3 >{{ post.title }}</h3>
-                                <span>Created At: {{ post.createdAt }}</span>
+                                <span>{{ post.createdAt | timesince }} ago</span>
                             </div>
                             <div class="body">
                                 <p>{{ post.content }}</p>
