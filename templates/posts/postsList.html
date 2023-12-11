@@ -15,7 +15,7 @@
             </div>
         </form>
 
-        <br><br>
+        <br><hr><br>
         <h3>Browse Categories</h3><br>
         <ul>
             <li><a 
@@ -28,7 +28,8 @@
                 href="{% url "posts" %}?{% if request.GET.ba %}ba={{ request.GET.ba }}&{% endif %}bc={{ cat.name }}">{{ cat.name }}</a></li>
             {% endfor %}
         </ul>
-        <br><br>
+    
+        <br><hr><br>
         <h3>Browse Authors</h3><br>
         <ul>
             <li><a 
