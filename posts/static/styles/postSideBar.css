@@ -3,10 +3,13 @@
     grid-template-columns: 1fr 3fr;
     gap: 16px;
 }
+
 .main-layout .sideBar{
     background: #171717;
-    padding: 16px 22px;
+    padding: 16px 22px 32px 22px;
     border-radius: 15px;
+    position: sticky;
+    top: 70px;
 }
 
 .sideBar ul{

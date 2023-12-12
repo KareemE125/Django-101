@@ -1,0 +1,12 @@
+{% extends "shared/base.html" %}
+
+{% load static %}
+{% block content %}
+    <link rel="stylesheet" href="{% static "styles/postCard.css" %}">
+    <h2>Post ID: {{post.id}}</h2>
+    <section class="card-list">
+        <div class="card">
+            {% include "posts/components/postCard.html" with post=post %}
+        </div>
+    </section>
+{% endblock content %}

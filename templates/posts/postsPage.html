@@ -1,0 +1,18 @@
+{% extends "shared/base.html" %}
+{% load static %}
+{% block content %}
+<main class="main-layout">
+
+    {% comment %} Filter and Search sidebar {% endcomment %}
+    <section>
+        {% include "posts/components/sideBar.html" %}
+    </section>
+
+    {% comment %} Posts List {% endcomment %}
+    <section>
+        {% include "posts/components/postsList.html" %}
+    </section>
+
+</main>
+{% endblock content %}
+

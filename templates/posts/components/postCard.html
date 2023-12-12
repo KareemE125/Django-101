@@ -1,0 +1,27 @@
+
+{% load static %}
+
+<link rel="stylesheet" href="{% static "styles/postCard.css" %}">
+<section>
+    <div>
+        <div class="header">
+            <h3 >{{ post.title }}</h3>
+            <span>{{ post.createdAt | timesince }} ago</span>
+        </div>
+        <div class="body">
+            <p>{{ post.content }}</p>
+            <div class="img-container">
+                {% if post.images %}
+                    <img src="{{post.images.url}}" alt="Post's Image">
+                {% endif %}
+            </div>
+        </div>
+        <div class="footer">
+            <span> <strong>BY ::</strong>  {{ post.author }}</span>
+            <div>
+                <a href="{% url "edit-post" post.id %}">  <strong>Edit</strong> </a>
+                <a href="{% url "delete-post" post.id %}">  <strong>Delete</strong> </a>
+            </div>
+        </div>
+    </div>
+</section>

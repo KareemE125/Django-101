@@ -6,7 +6,7 @@ from .forms import PostForm
 
 # Create your views here.
 @login_required(login_url='/auth/login')
-def postsList(request):
+def postsPage(request):
     bc = request.GET.get("bc")
     ba = request.GET.get("ba")
     search = request.GET.get("search")
@@ -37,11 +37,11 @@ def postsList(request):
         'categories': Category.objects.all(),
     }
     
-    return render(request, 'posts/postsList.html', context)
+    return render(request, 'posts/postsPage.html', context)
 
 @login_required(login_url='/auth/login')
-def post(request, id):
-    return render(request, 'posts/post.html', {'post': Post.objects.get(id=id)} )
+def postPage(request, id):
+    return render(request, 'posts/postPage.html', {'post': Post.objects.get(id=id)} )
 
 @login_required(login_url='/auth/login')
 def addPost(request):

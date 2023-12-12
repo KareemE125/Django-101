@@ -1,0 +1,19 @@
+{% load static %}
+<link rel="stylesheet" href="{% static "styles/postCard.css" %}">
+<section>
+        <h2>Posts List <span style="font-size: 14px; font-weight: 500;">( {{postCount}} posts )</span></h2>
+        <section class="card-list">
+            {% if not posts  %}
+                <p>Not Results Found for the applied filters</p>
+            {% endif %}
+            {% for post in posts %}
+                {% if not post.isDeleted %}
+                    <div class="card card-clickable" onclick="window.location='{% url "post" post.id %}'">
+                        {% include "posts/components/postCard.html" with post=post %}
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </section>
+</section>
+
+
