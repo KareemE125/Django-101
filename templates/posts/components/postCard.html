@@ -18,10 +18,12 @@
         </div>
         <div class="footer">
             <span> <strong>BY ::</strong>  {{ post.author }}</span>
+            {% if request.user.id == post.author.id %}
             <div>
                 <a href="{% url "edit-post" post.id %}">  <strong>Edit</strong> </a>
                 <a href="{% url "delete-post" post.id %}">  <strong>Delete</strong> </a>
             </div>
+            {% endif %}
         </div>
     </div>
 </section>

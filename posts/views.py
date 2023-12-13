@@ -33,7 +33,7 @@ def postsPage(request):
 
     context = {
         'posts': posts,
-        'postCount': posts.count(),
+        'postsCount': posts.count(),
         'authors': User.objects.filter(posts__isnull=False).distinct(),
         'categories': Category.objects.all(),
     }
@@ -57,7 +57,11 @@ def addPost(request):
 
 @login_required(login_url='/auth/login')
 def editPost(request, id):
+
     post = Post.objects.get(id=id)
+    if request.user.id is not post.author.id:
+        return redirect('posts')
+    
     postData = PostForm(instance=post)
     
     if request.method == 'POST':
@@ -71,6 +75,9 @@ def editPost(request, id):
 @login_required(login_url='/auth/login')
 def deletePost(request, id):
     post = Post.objects.get(id=id)
+    if request.user.id is not post.author.id:
+        return redirect('posts')
+    
     if request.method == 'POST':
         post.delete()
         return redirect('posts')

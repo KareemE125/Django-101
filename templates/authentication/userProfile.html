@@ -3,26 +3,29 @@
 {% block content %}
     <link rel="stylesheet" href="{% static "styles/userProfile.css" %}">
     <main>
-        <h2>{{title}}</h2>
-        
-        <section class="form-layout">
-            <form action="" method="post">
-                {% csrf_token %}
-                <label for="username">Username</label>
-                <input type="text" name="username" id="username">
-
-                <label for="password">Password</label>
-                <input type="password" name="password" id="password">
-
-                <input type="submit" value="{{title}}">
-            </form>
+        <div class="avatar">
+            <img src="{% static "images/User-Profile.png" %}" alt="user">
+        </div>
+        <h2>{{user.username | capfirst}}</h2>
+        <section>
+            <table>
+                <tr>
+                    <th>Username: </th>
+                    <td>{{user.username | capfirst}}</td>
+                </tr>
+                <tr>
+                    <th>Date Joined: </th>
+                    <td>{{user.date_joined | date:"F j, Y"}}</td>
+                </tr>
+                <tr>
+                    <th>Posts Published: </th>
+                    <td>{{postsCount}}</td>
+                </tr>
+            </table>
         </section>
-        {% if messages %}
-        <ul class="messages">
-            {% for message in messages %}
-            <li{% if message.tags %} class="tags"{% endif %}>{{ message }}</li>
-            {% endfor %}
-        </ul>
-        {% endif %}
+        <section>
+            <br><hr><br>
+            {% include "posts/components/postsList.html" with posts=posts postsCount=postsCount %}
+        </section>
     </main>
 {% endblock content %}

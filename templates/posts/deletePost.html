@@ -9,7 +9,7 @@
     {% csrf_token %}
     <p>Are you sure that you want to permenantly delete POST: "{{post}}"</p>
     <button type="submit">Yes</button>
-    <a href="{% url "posts" %}"><button type="button">NO</button></a>
+    <a href="{{request.META.HTTP_REFERER}}"><button type="button">NO</button></a>
   </form>
 </section>
 {% endblock content %}

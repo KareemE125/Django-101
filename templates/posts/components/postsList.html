@@ -1,7 +1,7 @@
 {% load static %}
 <link rel="stylesheet" href="{% static "styles/postCard.css" %}">
 <section>
-        <h2>Posts List <span style="font-size: 14px; font-weight: 500;">( {{postCount}} posts )</span></h2>
+        <h2>Posts List <span style="font-size: 14px; font-weight: 500;">( {{postsCount}} posts )</span></h2>
         <section class="card-list">
             {% if not posts  %}
                 <p>Not Results Found for the applied filters</p>

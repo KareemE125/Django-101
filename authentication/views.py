@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
 # Create your views here.
@@ -39,11 +40,18 @@ def registerPage(request):
     
     return render(request, 'authentication/login.html', {"title": "Register"})
 
-
-
 def logoutPage(request):
     logout(request)
     return redirect('login')
 
-
-
+@login_required(login_url='login')
+def userProfile(request, id):
+    user = request.user
+    posts = user.posts.all()
+    postsCount = posts.count()
+    context = {
+        'user': user,
+        'posts': posts,
+        'postsCount': postsCount,
+    }
+    return render(request, 'authentication/userProfile.html', context)
