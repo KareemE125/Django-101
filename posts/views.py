@@ -50,7 +50,9 @@ def addPost(request):
     if request.method == 'POST':
         postData = PostForm(request.POST, request.FILES)
         if postData.is_valid(): 
-            postData.save()
+            post = postData.save(commit=False)
+            post.author = request.user
+            post.save()
             return redirect('posts')
 
     return render(request, 'posts/editPost.html', {'postForm': postData} )
