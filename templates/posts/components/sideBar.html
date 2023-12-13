@@ -34,9 +34,9 @@
             href="{% url "posts" %}?{% if request.GET.bc %}bc={{ request.GET.bc }}{% endif %}&ba=all">All</a></li>
         {% for author in authors %}
         <li><a 
-            class="{% if author.name == request.GET.ba %} active-link {% endif %}" 
-            href="{% url "posts" %}?{% if request.GET.bc %}bc={{ request.GET.bc }}&{% endif %}ba={{ author.name }}">
-            {{ author.name }}</a>
+            class="{% if author.username == request.GET.ba %} active-link {% endif %}" 
+            href="{% url "posts" %}?{% if request.GET.bc %}bc={{ request.GET.bc }}&{% endif %}ba={{ author.username }}">
+            {{ author.username }}</a>
         </li>
         {% endfor %}
     </ul>

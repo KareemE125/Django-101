@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect
 from django.db.models import Q
 from django.contrib.auth.decorators import login_required
-from .models import Post, Author, Category
+from .models import Post, Category
+from django.contrib.auth.models import User
 from .forms import PostForm
 
 # Create your views here.
@@ -20,7 +21,7 @@ def postsPage(request):
         posts = posts.filter(
             Q(title__icontains = search) | 
             Q(content__icontains = search) |
-            Q(author__name__icontains = search) |
+            Q(author__username__icontains = search) |
             Q(category__name__icontains = search)
         )
         
@@ -28,12 +29,12 @@ def postsPage(request):
         posts = posts.filter(category__name = bc)
     
     if ba and ba!= "all":
-        posts = posts.filter(author__name = ba)
+        posts = posts.filter(author__username = ba)
 
     context = {
         'posts': posts,
         'postCount': posts.count(),
-        'authors': Author.objects.all(),
+        'authors': User.objects.filter(posts__isnull=False).distinct(),
         'categories': Category.objects.all(),
     }
     

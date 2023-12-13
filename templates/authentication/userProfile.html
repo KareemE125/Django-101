@@ -1,0 +1,28 @@
+{% extends "shared/base.html" %}
+{% load static %}
+{% block content %}
+    <link rel="stylesheet" href="{% static "styles/userProfile.css" %}">
+    <main>
+        <h2>{{title}}</h2>
+        
+        <section class="form-layout">
+            <form action="" method="post">
+                {% csrf_token %}
+                <label for="username">Username</label>
+                <input type="text" name="username" id="username">
+
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password">
+
+                <input type="submit" value="{{title}}">
+            </form>
+        </section>
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li{% if message.tags %} class="tags"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </main>
+{% endblock content %}
