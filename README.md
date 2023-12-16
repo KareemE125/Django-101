@@ -18,4 +18,5 @@ All what you need to know about Django, is right Here. 😉
 12. Sreach and Filtering
 13. Rest Framework
 14. CORS
-15. etc..
+15. Customize Admin Panel
+16. etc..
